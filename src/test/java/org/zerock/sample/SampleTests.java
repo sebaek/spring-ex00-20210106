@@ -1,6 +1,8 @@
 package org.zerock.sample;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +23,12 @@ public class SampleTests {
 	
 	@Test
 	public void testExist() {
+		Chef c1 = (Chef) context.getBean("chef");
+		Restaurant r1 = (Restaurant) context.getBean("restaurant");
+		
+		assertNotNull(r1.getChef());
+		assertEquals(c1, r1.getChef());
+		
 		log.info("------");
 		assertNotNull(context);
 		assertNotNull(context.getBean("chef"));
