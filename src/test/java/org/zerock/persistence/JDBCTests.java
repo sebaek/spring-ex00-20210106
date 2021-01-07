@@ -1,6 +1,7 @@
 package org.zerock.persistence;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,9 +24,13 @@ public class JDBCTests {
 	
 	@Test
 	public void testConnection()  {
-		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-		String user = "c##mydbms";
-		String password = "admin";
+//		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+//		String user = "c##mydbms";
+//		String password = "admin";
+		
+		String url = "jdbc:oracle:thin:@db202101040921_high?TNS_ADMIN=/home/opc/wallet";
+		String user = "admin";
+		String password = "Wnddkdwjdqhcjfl1";
 		
 		try (
 			Connection con 
@@ -33,6 +38,7 @@ public class JDBCTests {
 				) {
 			assertNotNull(con);
 		} catch (Exception e) {
+			fail(e.getMessage());
 			log.info(e);
 		}
 	}
